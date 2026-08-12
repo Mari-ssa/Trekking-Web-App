@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Admin Dashboard</h2>
+    <p>Number of treks: {{ number_of_treks }}</p>
+    <p>Number of users: {{ number_of_users }}</p>
+    <p>Number of staff: {{ number_of_staff }}</p>
+    <p>Number of bookings: {{ number_of_bookings }}</p>
+
+    <button class="btn btn-primary" onclick="location.href='/admin/treks'">Manage Treks</button>
+    <button class="btn btn-primary" onclick="location.href='/admin/users'">Manage Users</button>
+    <button class="btn btn-primary" onclick="location.href='/admin/staff'">Manage Staff</button>
+    <button class="btn btn-primary" onclick="location.href='/admin/bookings'">Manage Bookings</button>
+{% endblock %}

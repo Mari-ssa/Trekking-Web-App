@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available Treks</h2>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Duration</th>
+    <th>Difficulty</th>
+    <th>Price</th>
+    <th>Slots</th>
+    <th>Action</th>
+</tr>
+
+{% for trek in treks %}
+
+<tr>
+
+<td>{{ trek.trek_name }}</td>
+<td>{{ trek.location }}</td>
+<td>{{ trek.duration }}</td>
+<td>{{ trek.difficulty }}</td>
+<td>{{ trek.price }}</td>
+<td>{{ trek.available_slots }}</td>
+
+<td>
+
+{% if trek.available_slots > 0 %}
+
+<a href="/user/book/{{ trek.trek_id }}"
+   class="btn btn-success btn-sm">
+    Book
+</a>
+
+{% else %}
+
+<span class="text-danger">Full</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

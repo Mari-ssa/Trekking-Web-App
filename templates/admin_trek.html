@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manage Treks</h2>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Difficulty</th>
+    <th>Slots</th>
+    <th>Assigned Staff</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+
+{% for trek in treks %}
+
+<tr>
+
+<td>{{ trek.trek_id }}</td>
+<td>{{ trek.trek_name }}</td>
+<td>{{ trek.location }}</td>
+<td>{{ trek.difficulty }}</td>
+<td>{{ trek.available_slots }}</td>
+<td>{{ trek.assigned_staff_id }}</td>
+<td>{{ trek.status }}</td>
+<td>
+
+<a href="/admin/treks/{{ trek.trek_id }}/edit" class="btn btn-warning btn-sm">
+Edit
+</a>
+
+<a href="/admin/treks/{{ trek.trek_id }}/delete" class="btn btn-danger btn-sm">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/admin/treks/add" class="btn btn-success mb-3">
+    Add Trek
+</a>
+
+
+{% endblock %}

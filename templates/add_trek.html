@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<h2>Add Trek</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Trek Name</label>
+<input type="text" class="form-control" name="trek_name" required>
+</div>
+
+<div class="mb-3">
+<label>Location</label>
+<input type="text" class="form-control" name="location" required>
+</div>
+
+<div class="mb-3">
+<label>Duration(Days)</label>
+<input type="number" class="form-control" name="duration" required>
+</div>
+
+<div class="mb-3">
+<label>Difficulty</label>
+
+<select class="form-select" name="difficulty">
+
+<option>Easy</option>
+<option>Moderate</option>
+<option>Hard</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+<label>Price</label>
+<input type="number" class="form-control" name="price" required>
+</div>
+
+<div class="mb-3">
+<label>Start Date</label>
+<input type="date" class="form-control" name="start_date" required>
+</div>
+
+<div class="mb-3">
+<label>End Date</label>
+<input type="date" class="form-control" name="end_date" required>
+</div>
+
+<div class="mb-3">
+<label>Available Slots</label>
+<input type="number" class="form-control" name="available_slots" required>
+</div>
+
+<div class="mb-3">
+<label>Description</label>
+<textarea class="form-control" name="description"></textarea>
+</div>
+
+<div class="mb-3">
+<label>Status</label>
+
+<select class="form-select" name="status">
+
+<option>Open</option>
+<option>Closed</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-primary">
+Add Trek
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

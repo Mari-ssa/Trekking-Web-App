@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manage Staff</h2>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Status</th>
+    <th>Actions</th>
+    
+</tr>
+
+{% for staff in staff_members %}
+
+<tr>
+
+<td>{{ staff.user_id }}</td>
+<td>{{ staff.name }}</td>
+<td>{{ staff.email }}</td>
+<td>{{ staff.phone_no }}</td>
+<td>
+{% if staff.approved %}
+    <span class="badge bg-success">Approved</span>
+{% else %}
+    <span class="badge bg-warning text-dark">Pending</span>
+{% endif %}
+</td>
+
+
+<td>
+    <a href="/admin/staff/{{ staff.user_id }}/approve"
+       class="btn btn-success btn-sm">
+        Approve
+    </a>
+
+    <a href="/admin/staff/{{ staff.user_id }}/blacklist"
+       class="btn btn-danger btn-sm">
+        Blacklist
+    </a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+{% endblock %}
