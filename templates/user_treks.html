@@ -31,10 +31,14 @@
 
 {% if trek.available_slots > 0 %}
 
-<a href="/user/book/{{ trek.trek_id }}"
-   class="btn btn-success btn-sm">
-    Book
-</a>
+<form method="POST"
+      action="/user/treks/{{ trek.trek_id }}/book">
+
+    <button type="submit" class="btn btn-primary">
+        Book Trek
+    </button>
+
+</form>
 
 {% else %}
 
