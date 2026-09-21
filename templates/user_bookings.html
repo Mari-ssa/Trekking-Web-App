@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>My Bookings</h2>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Booking ID</th>
+    <th>Trek</th>
+    <th>Booking Date</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for booking in bookings %}
+
+<tr>
+    <td>{{ booking.booking_id }}</td>
+
+    <td>{{ booking.trek.trek_name }}</td>
+
+    <td>{{ booking.booking_date }}</td>
+
+    <td>
+        {% if booking.status == "Booked" %}
+            <span class="badge bg-success">Booked</span>
+        {% else %}
+            <span class="badge bg-secondary">Cancelled</span>
+        {% endif %}
+    </td>
+
+    <td>
+        {% if booking.status == "Booked" %}
+
+        <form method="POST"
+              action="/user/bookings/{{ booking.booking_id }}/cancel">
+
+            <button type="submit" class="btn btn-danger btn-sm">
+                Cancel
+            </button>
+
+        </form>
+
+        {% else %}
+
+        <span class="text-muted">No action</span>
+
+        {% endif %}
+    </td>
+</tr>
+
+{% else %}
+
+<tr>
+    <td colspan="5" class="text-center">
+        No bookings found.
+    </td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
