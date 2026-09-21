@@ -10,6 +10,8 @@ class User(db.Model):
     age=db.Column(db.Integer,nullable=False)
     blacklisted=db.Column(db.Boolean,default=False)
     approved=db.Column(db.Boolean,default=False)
+    bookings=db.relationship("Booking",back_populates="user",cascade="all, delete-orphan")
+    assigned_treks = db.relationship("Trek",back_populates="assigned_staff",foreign_keys="Trek.assigned_staff_id")
 
 
 class Trek(db.Model):
@@ -25,6 +27,8 @@ class Trek(db.Model):
     status=db.Column(db.String(20),nullable=False,default='Closed')
     description=db.Column(db.Text,nullable=False)
     assigned_staff_id=db.Column(db.Integer,db.ForeignKey('user.user_id'),nullable=True)
+    assigned_staff = db.relationship("User",back_populates="assigned_treks",foreign_keys=[assigned_staff_id])
+    bookings = db.relationship("Booking",back_populates="trek",cascade="all, delete-orphan")
 
 class Booking(db.Model):
     booking_id=db.Column(db.Integer,primary_key=True)
@@ -32,3 +36,5 @@ class Booking(db.Model):
     trek_id=db.Column(db.Integer,db.ForeignKey('trek.trek_id'),nullable=False)
     booking_date=db.Column(db.DateTime,nullable=False)
     status=db.Column(db.String(20),nullable=False,default='Booked')
+    user = db.relationship("User",back_populates="bookings")
+    trek = db.relationship("Trek",back_populates="bookings")
