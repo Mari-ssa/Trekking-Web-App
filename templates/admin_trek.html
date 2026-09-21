@@ -26,7 +26,7 @@
 <td>{{ trek.location }}</td>
 <td>{{ trek.difficulty }}</td>
 <td>{{ trek.available_slots }}</td>
-<td>{{ trek.assigned_staff_id }}</td>
+<td>{{ trek.assigned_staff.name if trek.assigned_staff else "Unassigned" }}</td>
 <td>{{ trek.status }}</td>
 <td>
 
